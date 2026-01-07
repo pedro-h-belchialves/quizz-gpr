@@ -331,6 +331,7 @@ export default function ClinicSurvey() {
                   </button>
                 ) : (
                   <button
+                    disabled={answers[step - 1] < 0}
                     onClick={() => setStep(step + 1)}
                     className={`w-full mt-8 md:mt-12 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition-all duration-200 bg-[#977e4b] text-white hover:shadow-2xl hover:shadow-amber-500/50 hover:scale-105"
                      `}
