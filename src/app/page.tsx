@@ -65,6 +65,33 @@ export default function ClinicSurvey() {
     e.preventDefault();
     setShowForm(false);
     setLeadInfo(formData);
+
+    try {
+      fetch("https://api.mzworkspace.com/v2/tickets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "client-token": "49d2e15b-0771-4d0d-9231-caf20fd9cfb1",
+        },
+        body: JSON.stringify({
+          channel: {
+            id: "5511933472674",
+            type: "WHATSAPP",
+          },
+
+          contact: {
+            id: formData.telefone,
+            name: formData.nome,
+          },
+
+          department: {
+            uuid: "bc538417-fe3d-4d05-a564-ad1fc1d3c354",
+          },
+        }),
+      });
+    } catch (error) {
+      console.error("Erro ao salvar:", error);
+    }
   };
 
   const handleSubmit = async () => {
@@ -159,7 +186,8 @@ export default function ClinicSurvey() {
               passos práticos.
             </p>
             <p className="text-amber-100 text-center mb-6 md:mb-8 text-sm md:text-base">
-              Em breve um membro da equipe entrará em contato
+              Em breve um especialista da minha equipe entrará em contato para
+              fazer a agendamento.
             </p>
           </div>
         </div>
@@ -174,7 +202,7 @@ export default function ClinicSurvey() {
       <div className="max-w-4xl mx-auto">
         <div className="bg-radial from-[#977e4b]/20 to-[#091836]/20 backdrop-blur-xl rounded-3xl p-6 md:p-12 border border-black/20 shadow-2xl">
           <h1
-            className={`${gloock.className} text-3xl md:text-5xl font-bold uppercase text-white text-center mb-3 md:mb-4 leading-tight`}
+            className={`${gloock.className} text-2xl md:text-5xl font-bold uppercase text-white text-center mb-3 md:mb-4 leading-tight`}
           >
             Descubra se sua clínica está preparada para
             <span className="text-[#977e4b]"> crescer em 2026 </span>
@@ -190,7 +218,7 @@ export default function ClinicSurvey() {
           <img
             src="/fabio.png"
             alt="Logo"
-            className="mx-auto  object-bottom object-cover w-80 h-80 scale-125 "
+            className="mx-auto  object-bottom object-cover w-40 h-40 scale-150 "
           />
 
           {
@@ -256,12 +284,12 @@ export default function ClinicSurvey() {
               </>
             ) : (
               <>
-                <p className="text-amber-50 text-center mb-8 md:mb-12 text-sm md:text-base">
+                <p className="text-amber-50  text-center mb-8 md:mb-12 text-xs md:text-base">
                   Responda às 5 perguntas dando uma nota de 0 a 10, sendo 0
                   muito ruim e 10 excelente.
                 </p>
 
-                <div className="space-y-8 md:space-y-10">
+                <div className="space-y-8  md:space-y-10">
                   <div
                     key={step}
                     className="bg-white/5 rounded-2xl p-4 md:p-6 border border-white/10"
@@ -270,12 +298,12 @@ export default function ClinicSurvey() {
                       {/* <span className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-[#977e4b]/10 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">
                       {step}
                     </span> */}
-                      <p className="text-white text-center text-base md:text-lg font-medium leading-relaxed pt-1">
+                      <p className="text-white text-center text-xs md:text-lg font-medium leading-relaxed pt-1">
                         {questions[step - 1]}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
+                    <div className="flex flex-wrap gap-1 md:gap-3 justify-center">
                       {[...Array(11)].map((_, value) => (
                         <button
                           key={value}
