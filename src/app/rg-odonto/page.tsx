@@ -109,8 +109,8 @@ export default function ClinicSurvey() {
         average_score: average,
         nome: leadInfo.nome,
         telefone: leadInfo.telefone,
-        origin: "fabio",
         instagram: leadInfo.instagram,
+        origin: "rodrigo",
       });
 
       if (error) throw error;
@@ -217,9 +217,9 @@ export default function ClinicSurvey() {
           /> */}
 
           <img
-            src="/fabio.png"
+            src="/rodrigo.png"
             alt="Logo"
-            className="mx-auto  object-bottom object-cover w-40 h-40 scale-150 "
+            className="mx-auto  object-bottom object-cover w-40 h-48 scale-150 "
           />
 
           {
