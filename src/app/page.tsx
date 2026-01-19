@@ -187,7 +187,7 @@ export default function ClinicSurvey() {
             </p>
             <p className="text-amber-100 text-center mb-6 md:mb-8 text-sm md:text-base">
               Em breve um especialista da minha equipe entrará em contato para
-              fazer a agendamento.
+              fazer o agendamento.
             </p>
           </div>
         </div>
