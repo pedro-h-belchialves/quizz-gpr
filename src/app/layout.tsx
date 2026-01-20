@@ -25,8 +25,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <head>
-        {/* Facebook Pixel */}
+      <body className={`${montserrat.className} antialiased`}>
+        {/* Facebook Pixel Script */}
         <Script
           id="facebook-pixel"
           strategy="afterInteractive"
@@ -45,9 +45,17 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=854788197339090&ev=PageView&noscript=1"
+          />
+        </noscript>
 
-      <body className={`${montserrat.className} antialiased`}>{children}</body>
+        {children}
+      </body>
     </html>
   );
 }
